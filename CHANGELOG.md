@@ -1,4 +1,8 @@
 
+## Version CURRENT
+
+- Removed ModUpdater support
+
 ## Version 0.1.3
 
 - Added [ModUpdater](https://gitea.thebrokenrail.com/TheBrokenRail/ModUpdater) support

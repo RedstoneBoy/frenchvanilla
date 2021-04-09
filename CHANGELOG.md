@@ -1,5 +1,5 @@
 
-## Version CURRENT
+## Version 0.2
 
 - Removed ModUpdater support
 - Added Mass Storage Barrels

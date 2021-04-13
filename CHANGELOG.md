@@ -1,5 +1,5 @@
 
-## Version _
+## Version 0.3
 
 - Added armour swapping
   - Right click with armour or elytra to replace the armour you're currently wearing

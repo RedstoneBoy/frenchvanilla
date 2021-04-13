@@ -1,4 +1,11 @@
 
+## Version _
+
+- Mass storage barrels are now created by consuming a diamond, instead of using a diamond hoe
+  - Crouch right click a barrel with a diamond to create a mass barrel, using up the diamond
+- Bug Fixes
+  - Barrels with items in them will no longer be converted to mass barrels
+
 ## Version 0.2
 
 - Removed ModUpdater support

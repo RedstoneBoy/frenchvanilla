@@ -32,8 +32,17 @@ public class UseBarrel implements UseBlockCallback {
             if (world.getBlockEntity(hitResult.getBlockPos()) instanceof BarrelBlockEntity
                     && !player.getStackInHand(hand).isEmpty()
                     && player.isSneaking()
-                    && player.getStackInHand(hand).getItem() == Items.DIAMOND_HOE
+                    && player.getStackInHand(hand).getItem() == Items.DIAMOND
             ) {
+                if (!((BarrelBlockEntity) world.getBlockEntity(hitResult.getBlockPos())).isEmpty()) {
+                    player.sendMessage(Texts.NOT_EMPTY, true);
+                    return ActionResult.FAIL;
+                }
+
+                ItemStack handStack = player.getStackInHand(hand);
+                handStack.setCount(handStack.getCount() - 1);
+                player.setStackInHand(hand, handStack);
+
                 world.removeBlockEntity(hitResult.getBlockPos());
 
                 world.setBlockEntity(hitResult.getBlockPos(), new MassBarrelBlockEntity());

@@ -13,3 +13,5 @@ A simple vanilla+ mod for Minecraft using Fabric
   - Crouch right click with an empty hand to move all of that item from your inventory to the barrel
   - Left click to retrieve one item
   - Crouch left click to retrieve one stack
+- Armour swapping
+  - Right click with armour or elytra to replace the armour you're currently wearing

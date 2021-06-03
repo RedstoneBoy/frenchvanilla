@@ -1,4 +1,14 @@
 
+## Version 0.4
+
+- Now requires NBT Crafting
+- Mass barrels must now be created with a mass barrel converter
+- Converters are crafted with a nether star surrounded by 8 chests
+- Barrels now support hoppers
+- Barrels now store 1024 stacks instead of 65536 items
+  - For items that stack to 64, this means the barrel still stores 65536 items
+  - For non-stackables, the barrel stores 1024 items
+
 ## Version 0.3
 
 - Added armour swapping

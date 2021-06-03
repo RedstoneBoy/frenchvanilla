@@ -1,5 +1,6 @@
 package net.bios.frenchvanilla.event;
 
+import net.bios.frenchvanilla.NbtStrings;
 import net.bios.frenchvanilla.Texts;
 import net.bios.frenchvanilla.blockentity.MassBarrelBlockEntity;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -7,7 +8,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BarrelBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
@@ -31,8 +31,8 @@ public class UseBarrel implements UseBlockCallback {
         ) {
             if (world.getBlockEntity(hitResult.getBlockPos()) instanceof BarrelBlockEntity
                     && !player.getStackInHand(hand).isEmpty()
-                    && player.isSneaking()
-                    && player.getStackInHand(hand).getItem() == Items.DIAMOND
+                    && player.getStackInHand(hand).hasTag()
+                    && player.getStackInHand(hand).getTag().contains(NbtStrings.MASS_STORAGE_CONVERTER)
             ) {
                 if (!((BarrelBlockEntity) world.getBlockEntity(hitResult.getBlockPos())).isEmpty()) {
                     player.sendMessage(Texts.NOT_EMPTY, true);

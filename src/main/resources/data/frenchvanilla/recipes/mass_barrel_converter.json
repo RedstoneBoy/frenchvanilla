@@ -1,0 +1,28 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CNC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "minecraft:nether_star",
+    "data": {
+      "frenchvanilla:mass_barrel_converter": false,
+      "display": {
+        "Name": {
+          "text": "Mass Barrel Converter",
+          "nbtcrafting:stringify": true
+        }
+      }
+    }
+  }
+}

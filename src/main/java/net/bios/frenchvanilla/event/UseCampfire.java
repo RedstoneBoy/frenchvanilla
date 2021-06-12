@@ -26,7 +26,7 @@ public class UseCampfire implements UseBlockCallback {
         if (!player.getStackInHand(hand).isEmpty()) return ActionResult.PASS;
 
         ServerWorld sworld = (ServerWorld) world;
-        if (sworld.getBlockState(hitResult.getBlockPos()).getBlock().isIn(BlockTags.CAMPFIRES)) {
+        if (sworld.getBlockState(hitResult.getBlockPos()).isIn(BlockTags.CAMPFIRES)) {
             BlockPos bedPos = SleepUtil.findBedNextTo(sworld, hitResult.getBlockPos());
             if (bedPos != null && sworld.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)) {
                 if (sworld.getTimeOfDay() % 24000L > 13000L) {

@@ -11,7 +11,7 @@ public class SleepUtil {
     public static BlockPos findBedNextTo(World world, BlockPos pos) {
         BlockPos[] positions = new BlockPos[]{pos.north(), pos.south(), pos.east(), pos.west()};
         for (BlockPos neighbour : positions) {
-            if (world.getBlockState(neighbour).getBlock().isIn(BlockTags.BEDS)) {
+            if (world.getBlockState(neighbour).isIn(BlockTags.BEDS)) {
                 return neighbour;
             }
         }

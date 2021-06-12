@@ -33,10 +33,10 @@ public class UseArmour implements UseItemCallback {
             return TypedActionResult.pass(ItemStack.EMPTY);
         }
 
-        ItemStack oldArmour = player.inventory.armor.get(equipSlot.getEntitySlotId());
+        ItemStack oldArmour = player.getInventory().armor.get(equipSlot.getEntitySlotId());
         ItemStack newArmour = player.getStackInHand(hand);
 
-        player.inventory.armor.set(equipSlot.getEntitySlotId(), newArmour);
+        player.getInventory().armor.set(equipSlot.getEntitySlotId(), newArmour);
         player.setStackInHand(hand, oldArmour);
 
         return TypedActionResult.success(ItemStack.EMPTY);

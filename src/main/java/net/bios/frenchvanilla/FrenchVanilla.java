@@ -1,6 +1,5 @@
 package net.bios.frenchvanilla;
 
-import net.bios.frenchvanilla.blockentity.BlockEntities;
 import net.bios.frenchvanilla.event.Events;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
@@ -14,7 +13,6 @@ public class FrenchVanilla implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        BlockEntities.register();
         Events.register();
     }
 }

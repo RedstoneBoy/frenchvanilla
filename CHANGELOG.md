@@ -1,3 +1,7 @@
+## Version 0.5
+
+- Removed mass storage barrels
+- No longer requires NBT Crafting
 
 ## Version 0.4
 
@@ -6,31 +10,32 @@
 - Converters are crafted with a nether star surrounded by 8 chests
 - Barrels now support hoppers
 - Barrels now store 1024 stacks instead of 65536 items
-  - For items that stack to 64, this means the barrel still stores 65536 items
-  - For non-stackables, the barrel stores 1024 items
+    - For items that stack to 64, this means the barrel still stores 65536 items
+    - For non-stackables, the barrel stores 1024 items
 
 ## Version 0.3
 
 - Added armour swapping
-  - Right click with armour or elytra to replace the armour you're currently wearing
+    - Right click with armour or elytra to replace the armour you're currently wearing
 - Mass storage barrels are now created by consuming a diamond, instead of using a diamond hoe
-  - Crouch right click a barrel with a diamond to create a mass barrel, using up the diamond
+    - Crouch right click a barrel with a diamond to create a mass barrel, using up the diamond
 
 ### Bug Fixes
+
 - Barrels with items in them will no longer be converted to mass barrels
 
 ## Version 0.2
 
 - Removed ModUpdater support
 - Added Mass Storage Barrels
-  - Crouch right click a barrel with a diamond hoe to turn it into a mass storage barrel
-  - One barrel can hold up to 65536 of the same item
-  - Right click with an item to put it in the barrel
-  - Crouch right click with an empty hand to transfer all items of the barrels type from your inventory
-  - Left click to take one item
-  - Crouch left click to take one stack of the item
+    - Crouch right click a barrel with a diamond hoe to turn it into a mass storage barrel
+    - One barrel can hold up to 65536 of the same item
+    - Right click with an item to put it in the barrel
+    - Crouch right click with an empty hand to transfer all items of the barrels type from your inventory
+    - Left click to take one item
+    - Crouch left click to take one stack of the item
 - Removed translation support since clients without this mod will display untranslated text
-  - Looking for a solution
+    - Looking for a solution
 
 ## Version 0.1.3
 
@@ -39,4 +44,4 @@
 ## Version 0.1.2
 
 - Rest at campfires
-  - With an empty hand, right click a campfire placed next to a bed to skip to night
+    - With an empty hand, right click a campfire placed next to a bed to skip to night

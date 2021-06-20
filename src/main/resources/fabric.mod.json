@@ -10,7 +10,9 @@
   "icon": "assets/frenchvanilla/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [],
+    "client": [
+      "net.bios.frenchvanilla.FrenchVanillaClient"
+    ],
     "main": [
       "net.bios.frenchvanilla.FrenchVanilla"
     ]

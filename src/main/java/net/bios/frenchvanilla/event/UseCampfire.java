@@ -1,5 +1,6 @@
 package net.bios.frenchvanilla.event;
 
+import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.SleepUtil;
 import net.bios.frenchvanilla.Texts;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -19,11 +20,13 @@ public class UseCampfire implements UseBlockCallback {
 
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (world.isClient) return ActionResult.PASS;
-        if (player.isSpectator()) return ActionResult.PASS;
-        if (hitResult.getType() != HitResult.Type.BLOCK) return ActionResult.PASS;
-        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
-        if (!player.getStackInHand(hand).isEmpty()) return ActionResult.PASS;
+        if (world.isClient
+                || !FrenchVanilla.config.campfireResting
+                || player.isSpectator()
+                || hitResult.getType() != HitResult.Type.BLOCK
+                || hand != Hand.MAIN_HAND
+                || !player.getStackInHand(hand).isEmpty())
+            return ActionResult.PASS;
 
         ServerWorld sworld = (ServerWorld) world;
         if (sworld.getBlockState(hitResult.getBlockPos()).isIn(BlockTags.CAMPFIRES)) {

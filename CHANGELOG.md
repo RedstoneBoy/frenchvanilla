@@ -1,3 +1,8 @@
+## Version 0.x
+
+- Added configuration
+- Now requires CompleteConfig
+
 ## Version 0.5
 
 - Removed mass storage barrels

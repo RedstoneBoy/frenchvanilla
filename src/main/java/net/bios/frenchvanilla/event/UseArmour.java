@@ -1,5 +1,6 @@
 package net.bios.frenchvanilla.event;
 
+import net.bios.frenchvanilla.FrenchVanilla;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,6 +16,7 @@ public class UseArmour implements UseItemCallback {
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         if (world.isClient
+                || !FrenchVanilla.config.armorSwapping
                 || hand != Hand.MAIN_HAND
                 || player.getStackInHand(hand).isEmpty()
                 || !(player.getStackInHand(hand).getItem() instanceof Wearable))

@@ -5,6 +5,7 @@ A simple vanilla+ mod for Minecraft using Fabric
 ## Dependencies
 
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+- [CompleteConfig](https://www.curseforge.com/minecraft/mc-mods/completeconfig)
 
 ## Features
 

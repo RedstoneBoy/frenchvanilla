@@ -1,6 +1,6 @@
 {
   "chat.frenchvanilla.already_night": "It is already night",
   "chat.frenchvanilla.rested_at_campfire": "%s rested at a campfire. It is now night!",
-  "info.frenchvanilla.mass_barrel.wrong_item": "This barrel already contains a different type of item",
-  "info.frenchvanilla.mass_barrel.empty": "Empty"
+  "config.frenchvanilla.armorSwapping": "Armor Swapping",
+  "config.frenchvanilla.campfireResting": "Resting at Campfires"
 }

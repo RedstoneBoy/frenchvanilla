@@ -1,7 +1,14 @@
-## Version 0.x
+## Version 0.6
 
 - Added configuration
 - Now requires CompleteConfig
+- Added a sound to armor swapping
+- Added death locks
+    - Dying creates a new death lock
+    - When a player respawn, they get a death key for their last death
+    - When a player is far from their death, the key tells them where they died
+    - When a player is near their death, the key gives them their items back
+    - Players can use /deaths to see their deaths, as well as get keys for them
 
 ## Version 0.5
 

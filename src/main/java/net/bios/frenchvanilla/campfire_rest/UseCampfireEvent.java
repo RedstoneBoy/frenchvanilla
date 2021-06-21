@@ -1,4 +1,4 @@
-package net.bios.frenchvanilla.event;
+package net.bios.frenchvanilla.campfire_rest;
 
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.SleepUtil;
@@ -16,7 +16,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-public class UseCampfire implements UseBlockCallback {
+public class UseCampfireEvent implements UseBlockCallback {
+    public static void register() {
+        UseBlockCallback.EVENT.register(new UseCampfireEvent());
+    }
 
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {

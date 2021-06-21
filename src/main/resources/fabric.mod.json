@@ -15,6 +15,9 @@
     ],
     "main": [
       "net.bios.frenchvanilla.FrenchVanilla"
+    ],
+    "cardinal-components": [
+      "net.bios.frenchvanilla.Components"
     ]
   },
   "mixins": [
@@ -25,5 +28,11 @@
     "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
+  },
+  "custom": {
+    "cardinal-components": [
+      "frenchvanilla:deathlocks",
+      "frenchvanilla:deathkey"
+    ]
   }
 }

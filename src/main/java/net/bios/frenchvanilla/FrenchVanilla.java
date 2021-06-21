@@ -1,6 +1,5 @@
 package net.bios.frenchvanilla;
 
-import net.bios.frenchvanilla.event.Events;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
@@ -9,7 +8,7 @@ public class FrenchVanilla implements ModInitializer {
 
     public static Settings config;
 
-    public static final Identifier identifier(String value) {
+    public static Identifier identifier(String value) {
         return new Identifier(ID, value);
     }
 

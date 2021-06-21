@@ -1,6 +1,8 @@
 # French Vanilla
 
-A simple vanilla+ mod for Minecraft using Fabric
+A simple server-side only vanilla+ mod for Minecraft using Fabric.
+
+This mod can also be installed on clients for use in single-player worlds.
 
 ## Dependencies
 
@@ -10,6 +12,11 @@ A simple vanilla+ mod for Minecraft using Fabric
 ## Features
 
 - Rest at campfires
-    - With an empty hand, right click a campfire placed next to a bed to skip to night
+    - With an empty hand, right-click a campfire placed next to a bed to skip to night
 - Armour swapping
     - Right click with armour or elytra to replace the armour you're currently wearing
+- Death Locks
+    - Dying creates a new death lock
+    - A player gets a death key on respawn or through the /deaths command
+    - When used, the key either tells the player where they died, or if they're close enough, it gives them their items
+      back

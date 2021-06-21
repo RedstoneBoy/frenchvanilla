@@ -27,6 +27,10 @@ repositories {
         url "https://maven.terraformersmc.com/"
     }
 
+    maven {
+        name = 'Ladysnake Mods'
+        url = 'https://ladysnake.jfrog.io/artifactory/mods'
+    }
 }
 
 dependencies {
@@ -36,9 +40,15 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation("com.gitlab.Lortseam:completeconfig:1.0.0")
+    modImplementation "com.gitlab.Lortseam:completeconfig:1.0.0"
 
-    // modImplementation "de.siphalor:nbtcrafting-1.17:2+"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:3.0.0"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:3.0.0"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:3.0.0"
+
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:3.0.0"
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:3.0.0"
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:3.0.0"
 }
 
 processResources {

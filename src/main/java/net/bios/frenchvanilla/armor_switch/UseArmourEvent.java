@@ -1,4 +1,4 @@
-package net.bios.frenchvanilla.event;
+package net.bios.frenchvanilla.armor_switch;
 
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
@@ -8,11 +8,17 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Wearable;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class UseArmour implements UseItemCallback {
+public class UseArmourEvent implements UseItemCallback {
+    public static void register() {
+        UseItemCallback.EVENT.register(new UseArmourEvent());
+    }
+
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         if (world.isClient
@@ -40,6 +46,8 @@ public class UseArmour implements UseItemCallback {
 
         player.getInventory().armor.set(equipSlot.getEntitySlotId(), newArmour);
         player.setStackInHand(hand, oldArmour);
+
+        player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, SoundCategory.MASTER, 1.0f, 1.0f);
 
         return TypedActionResult.success(ItemStack.EMPTY);
     }

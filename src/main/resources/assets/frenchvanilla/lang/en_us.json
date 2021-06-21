@@ -4,5 +4,6 @@
   "config.frenchvanilla.armorSwapping": "Armor Swapping",
   "config.frenchvanilla.campfireResting": "Resting at Campfires",
   "config.frenchvanilla.deathLocks": "Death Locks",
-  "config.frenchvanilla.deathKeyUnlockDistance": "Death Key Unlock Distance"
+  "config.frenchvanilla.deathKeyUnlockDistance": "Death Key Unlock Distance",
+  "config.frenchvanilla.homes": "Homes"
 }

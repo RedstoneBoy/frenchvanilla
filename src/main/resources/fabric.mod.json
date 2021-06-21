@@ -32,7 +32,8 @@
   "custom": {
     "cardinal-components": [
       "frenchvanilla:deathlocks",
-      "frenchvanilla:deathkey"
+      "frenchvanilla:deathkey",
+      "frenchvanilla:home"
     ]
   }
 }

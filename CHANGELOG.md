@@ -1,3 +1,10 @@
+## Version 0.7
+
+- Added /sethome and /home
+    - Use /sethome to set your home
+    - Use /home to teleport to your home
+    - Operators can teleport to other players' homes
+
 ## Version 0.6
 
 - Added configuration

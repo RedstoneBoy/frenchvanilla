@@ -20,3 +20,7 @@ This mod can also be installed on clients for use in single-player worlds.
     - A player gets a death key on respawn or through the /deaths command
     - When used, the key either tells the player where they died, or if they're close enough, it gives them their items
       back
+- Homes
+    - Use /sethome to set your home
+    - Use /home to teleport to your home
+    - Operators can teleport to other players' homes

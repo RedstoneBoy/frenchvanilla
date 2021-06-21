@@ -1,6 +1,7 @@
 package net.bios.frenchvanilla.deathlock;
 
 import com.mojang.brigadier.CommandDispatcher;
+import net.bios.frenchvanilla.FrenchVanilla;
 import net.minecraft.command.argument.UuidArgumentType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.command.ServerCommandSource;
@@ -19,7 +20,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class DeathsCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("deaths").executes(context -> {
+        dispatcher.register(literal("deaths").requires(source -> FrenchVanilla.config.deathLocks).executes(context -> {
             ServerPlayerEntity player = context.getSource().getPlayer();
             DeathLocksComponent locks = DEATH_LOCKS.get(player);
 

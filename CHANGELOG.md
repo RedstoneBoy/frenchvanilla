@@ -5,6 +5,10 @@
     - Use /home to teleport to your home
     - Operators can teleport to other players' homes
 
+### Bug Fixes
+
+- /deaths command can no longer be used when death locks are disabled
+
 ## Version 0.6
 
 - Added configuration

@@ -33,7 +33,8 @@
     "cardinal-components": [
       "frenchvanilla:deathlocks",
       "frenchvanilla:deathkey",
-      "frenchvanilla:home"
+      "frenchvanilla:home",
+      "frenchvanilla:timber_tasks"
     ]
   }
 }

@@ -24,3 +24,4 @@ This mod can also be installed on clients for use in single-player worlds.
     - Use /sethome to set your home
     - Use /home to teleport to your home
     - Operators can teleport to other players' homes
+- Timber

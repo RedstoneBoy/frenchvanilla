@@ -4,6 +4,8 @@
     - Use /sethome to set your home
     - Use /home to teleport to your home
     - Operators can teleport to other players' homes
+- Added Timber
+    - Break a naturally generated tree log to break the entire tree
 
 ### Bug Fixes
 

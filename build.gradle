@@ -45,10 +45,12 @@ dependencies {
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:3.0.0"
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:3.0.0"
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:3.0.0"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-world:3.0.0"
 
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:3.0.0"
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:3.0.0"
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:3.0.0"
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-world:3.0.0"
 }
 
 processResources {

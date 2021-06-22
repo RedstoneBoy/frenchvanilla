@@ -7,12 +7,15 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
+import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
+import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
 import net.bios.frenchvanilla.deathlock.DeathKeyItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
+import net.bios.frenchvanilla.timber.TimberTaskManagerComponent;
 import net.minecraft.item.Items;
 
-public class Components implements EntityComponentInitializer, ItemComponentInitializer {
+public class Components implements EntityComponentInitializer, ItemComponentInitializer, WorldComponentInitializer {
     public static final ComponentKey<DeathLocksComponent> DEATH_LOCKS =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("deathlocks"), DeathLocksComponent.class);
 
@@ -21,6 +24,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 
     public static final ComponentKey<HomeComponent> HOME =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("home"), HomeComponent.class);
+
+    public static final ComponentKey<TimberTaskManagerComponent> TIMBER_TASKS =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("timber_tasks"), TimberTaskManagerComponent.class);
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
@@ -31,5 +37,10 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     @Override
     public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
         registry.register(Items.ARROW, DEATH_KEY, DeathKeyItemComponent::new);
+    }
+
+    @Override
+    public void registerWorldComponentFactories(WorldComponentFactoryRegistry registry) {
+        registry.register(TIMBER_TASKS, (w) -> new TimberTaskManagerComponent());
     }
 }

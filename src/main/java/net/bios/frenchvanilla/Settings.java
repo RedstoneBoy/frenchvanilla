@@ -13,6 +13,7 @@ public final class Settings extends Config implements ConfigContainer {
     public boolean armorSwapping = true;
     public boolean campfireResting = true;
     public boolean deathLocks = true;
+    public boolean restoreXp = true;
     public double deathKeyUnlockDistance = 10.0;
     public boolean homes = true;
     public boolean timber = true;

@@ -22,15 +22,15 @@ public class PlayerDeathEvents implements ServerPlayerEvents.AllowDeath, ServerP
     @Override
     public boolean allowDeath(ServerPlayerEntity player, DamageSource damageSource, float damageAmount) {
         if (!FrenchVanilla.config.deathLocks
-                || player.getServerWorld().getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
+                || player.getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
             return true;
 
         DeathLocksComponent locks = DEATH_LOCKS.get(player);
         BlockPos position = player.getBlockPos();
-        if (position.getY() < player.getServerWorld().getBottomY()) {
-            position = position.withY(player.getServerWorld().getBottomY());
-        } else if (position.getY() > player.getServerWorld().getTopY()) {
-            position = position.withY(player.getServerWorld().getTopY());
+        if (position.getY() < player.getWorld().getBottomY()) {
+            position = position.withY(player.getWorld().getBottomY());
+        } else if (position.getY() > player.getWorld().getTopY()) {
+            position = position.withY(player.getWorld().getTopY());
         }
 
         ItemStack[] stacks = new ItemStack[player.getInventory().size()];
@@ -38,10 +38,18 @@ public class PlayerDeathEvents implements ServerPlayerEvents.AllowDeath, ServerP
             stacks[i] = player.getInventory().getStack(i);
         }
 
-        UUID latestDeath = locks.addDeathLock(new DeathLock(player.getServerWorld().getRegistryKey().getValue(), position, player.getUuid(), Arrays.asList(stacks)));
+        UUID latestDeath = locks.addDeathLock(new DeathLock(
+                player.getWorld().getRegistryKey().getValue(),
+                position,
+                player.getUuid(),
+                Arrays.asList(stacks),
+                player.experienceLevel)
+        );
         locks.setLatestDeath(latestDeath);
 
         player.getInventory().clear();
+        player.setExperienceLevel(0);
+        player.setExperiencePoints(0);
 
         return true;
     }
@@ -49,7 +57,7 @@ public class PlayerDeathEvents implements ServerPlayerEvents.AllowDeath, ServerP
     @Override
     public void afterRespawn(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {
         if (!FrenchVanilla.config.deathLocks
-                || newPlayer.getServerWorld().getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
+                || newPlayer.getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
             return;
 
         DeathLocksComponent locks = DEATH_LOCKS.get(newPlayer);

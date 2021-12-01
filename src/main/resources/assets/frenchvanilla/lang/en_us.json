@@ -4,6 +4,9 @@
   "config.frenchvanilla.armorSwapping": "Armor Swapping",
   "config.frenchvanilla.campfireResting": "Resting at Campfires",
   "config.frenchvanilla.deathLocks": "Death Locks",
+  "config.frenchvanilla.restoreXp": "Restore Xp",
   "config.frenchvanilla.deathKeyUnlockDistance": "Death Key Unlock Distance",
-  "config.frenchvanilla.homes": "Homes"
+  "config.frenchvanilla.homes": "Homes",
+  "config.frenchvanilla.timber": "Timber",
+  "config.frenchvanilla.timberTasksPerTick": "Timber Tasks per Tick"
 }

@@ -1,3 +1,12 @@
+## Version 0.8
+
+- Updated to 1.18
+- Death locks can now optionally store xp
+
+### Bug Fixes
+
+- Added some missing translation strings in en_us
+
 ## Version 0.7
 
 - Added /sethome and /home

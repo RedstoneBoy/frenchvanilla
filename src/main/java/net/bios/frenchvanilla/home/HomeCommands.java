@@ -19,7 +19,7 @@ public class HomeCommands {
         dispatcher.register(literal("sethome").requires(source -> FrenchVanilla.config.homes).executes(context -> {
             var player = context.getSource().getPlayer();
             var homeComponent = HOME.get(player);
-            homeComponent.home = new Home(player.getServerWorld().getRegistryKey().getValue(), player.getPos());
+            homeComponent.home = new Home(player.getWorld().getRegistryKey().getValue(), player.getPos());
 
             context.getSource().sendFeedback(new LiteralText("You have a new home.")
                     .setStyle(Style.EMPTY.withColor(Formatting.AQUA)), false);
@@ -28,15 +28,15 @@ public class HomeCommands {
         }));
 
         dispatcher.register(literal("home").requires(source -> FrenchVanilla.config.homes).executes(context -> {
-            var player = context.getSource().getPlayer();
+                    var player = context.getSource().getPlayer();
 
-            if (!teleportToHome(player, player)) {
-                context.getSource().sendFeedback(new LiteralText("You do not have a home. Use /sethome to set a home")
-                        .setStyle(Style.EMPTY.withColor(Formatting.RED)), false);
-            }
+                    if (!teleportToHome(player, player)) {
+                        context.getSource().sendFeedback(new LiteralText("You do not have a home. Use /sethome to set a home")
+                                .setStyle(Style.EMPTY.withColor(Formatting.RED)), false);
+                    }
 
-            return 1;
-        })
+                    return 1;
+                })
                 .then(argument("player", EntityArgumentType.player()).requires(source -> source.hasPermissionLevel(2)).executes(context -> {
                     var sourcePlayer = context.getSource().getPlayer();
                     var homeTarget = EntityArgumentType.getPlayer(context, "player");

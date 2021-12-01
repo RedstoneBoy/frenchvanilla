@@ -14,13 +14,15 @@ public final class DeathLock {
     private final BlockPos position;
     private final UUID ownerId;
     private final ArrayList<ItemStack> stacks;
+    private final int xpLevel;
 
     public DeathLock(Identifier dimension, BlockPos position, UUID ownerId,
-                     Collection<ItemStack> stacks) {
+                     Collection<ItemStack> stacks, int xpLevel) {
         this.dimension = dimension;
         this.position = position;
         this.ownerId = ownerId;
         this.stacks = new ArrayList<>(stacks);
+        this.xpLevel = xpLevel;
     }
 
     public static DeathLock readFromNbt(NbtCompound tag) {
@@ -36,8 +38,9 @@ public final class DeathLock {
         for (int i = 0; i < items.size(); i++) {
             stacks.add(i, ItemStack.fromNbt(items.getCompound(i)));
         }
+        int xpLevel = tag.getInt("xp_level");
 
-        return new DeathLock(dimension, position, ownerId, stacks);
+        return new DeathLock(dimension, position, ownerId, stacks, xpLevel);
     }
 
     public void writeToNbt(NbtCompound tag) {
@@ -55,6 +58,8 @@ public final class DeathLock {
         }
 
         tag.put("items", items);
+
+        tag.putInt("xp_level", xpLevel);
     }
 
     public Identifier dimension() {
@@ -73,27 +78,31 @@ public final class DeathLock {
         return stacks;
     }
 
+    public int xpLevel() {
+        return xpLevel;
+    }
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (DeathLock) obj;
-        return Objects.equals(this.position, that.position) &&
-                Objects.equals(this.ownerId, that.ownerId) &&
-                Objects.equals(this.stacks, that.stacks);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeathLock deathLock = (DeathLock) o;
+        return xpLevel == deathLock.xpLevel && dimension.equals(deathLock.dimension) && position.equals(deathLock.position) && ownerId.equals(deathLock.ownerId) && stacks.equals(deathLock.stacks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, ownerId, stacks);
+        return Objects.hash(dimension, position, ownerId, stacks, xpLevel);
     }
 
     @Override
     public String toString() {
-        return "DeathLock[" +
-                "position=" + position + ", " +
-                "ownerId=" + ownerId + ", " +
-                "stacks=" + stacks + ']';
+        return "DeathLock{" +
+                "dimension=" + dimension +
+                ", position=" + position +
+                ", ownerId=" + ownerId +
+                ", stacks=" + stacks +
+                ", xpLevel=" + xpLevel +
+                '}';
     }
-
 }

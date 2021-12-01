@@ -45,6 +45,10 @@ public class UseDeathKeyEvent implements UseItemCallback {
                     // Unlock
                     player.sendMessage(new LiteralText("Unlocking...").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false);
 
+                    if (FrenchVanilla.config.restoreXp) {
+                        player.addExperienceLevels(lock.xpLevel());
+                    }
+
                     // TODO: Inventory merging in creative
                     for (ItemStack stack : lock.stacks()) {
                         player.getInventory().insertStack(stack);

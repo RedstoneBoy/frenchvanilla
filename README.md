@@ -7,7 +7,6 @@ This mod can also be installed on clients for use in single-player worlds.
 ## Dependencies
 
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
-- [CompleteConfig](https://www.curseforge.com/minecraft/mc-mods/completeconfig)
 
 ## Features
 

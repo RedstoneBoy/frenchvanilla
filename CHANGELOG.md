@@ -1,3 +1,7 @@
+## Version 0.8.1
+
+- Include CompleteConfig
+
 ## Version 0.8
 
 - Updated to 1.18

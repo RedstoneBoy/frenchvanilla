@@ -1,6 +1,7 @@
 package net.bios.frenchvanilla.deathlock;
 
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
+import net.bios.frenchvanilla.NbtIds;
 import net.minecraft.item.ItemStack;
 
 import java.util.Optional;
@@ -12,10 +13,10 @@ public class DeathKeyItemComponent extends ItemComponent {
     }
 
     public Optional<UUID> getLockId() {
-        return Optional.ofNullable(this.getUuid("frenchvanilla:lockid"));
+        return Optional.ofNullable(this.getUuid(NbtIds.DEATH_LOCK_ID));
     }
 
     public void setLockId(UUID lockId) {
-        this.putUuid("frenchvanilla:lockid", lockId);
+        this.putUuid(NbtIds.DEATH_LOCK_ID, lockId);
     }
 }

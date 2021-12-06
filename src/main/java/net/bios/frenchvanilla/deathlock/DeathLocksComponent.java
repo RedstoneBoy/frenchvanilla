@@ -1,6 +1,7 @@
 package net.bios.frenchvanilla.deathlock;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
+import net.bios.frenchvanilla.NbtIds;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
@@ -50,16 +51,16 @@ public class DeathLocksComponent implements Component {
 
     @Override
     public void readFromNbt(NbtCompound tag) {
-        NbtList locks = tag.getList("locks", NbtElement.COMPOUND_TYPE);
+        NbtList locks = tag.getList(NbtIds.DEATH_LOCKS, NbtElement.COMPOUND_TYPE);
         for (int i = 0; i < locks.size(); i++) {
             NbtCompound entryCompound = locks.getCompound(i);
-            UUID id = entryCompound.getUuid("id");
-            NbtCompound lockCompound = entryCompound.getCompound("lock");
+            UUID id = entryCompound.getUuid(NbtIds.DEATH_LOCK_ID);
+            NbtCompound lockCompound = entryCompound.getCompound(NbtIds.DEATH_LOCKS_LOCK);
             DeathLock lock = DeathLock.readFromNbt(lockCompound);
             this.deathLocks.put(id, lock);
         }
-        if (tag.contains("latest_death")) {
-            this.latestDeath = Optional.of(tag.getUuid("latest_death"));
+        if (tag.contains(NbtIds.DEATH_LOCKS_LATEST)) {
+            this.latestDeath = Optional.of(tag.getUuid(NbtIds.DEATH_LOCKS_LATEST));
         }
     }
 
@@ -71,12 +72,13 @@ public class DeathLocksComponent implements Component {
             lockEntry.getValue().writeToNbt(lockCompound);
 
             NbtCompound entryCompound = new NbtCompound();
-            entryCompound.putUuid("id", lockEntry.getKey());
-            entryCompound.put("lock", lockCompound);
+            entryCompound.putUuid(NbtIds.DEATH_LOCK_ID, lockEntry.getKey());
+            entryCompound.put(NbtIds.DEATH_LOCKS_LOCK, lockCompound);
 
             locks.add(entryCompound);
         }
-        tag.put("locks", locks);
-        this.latestDeath.ifPresent(id -> tag.putUuid("latest_death", id));
+        tag.put(NbtIds.DEATH_LOCKS, locks);
+        tag.remove(NbtIds.DEATH_LOCKS_LATEST);
+        this.latestDeath.ifPresent(id -> tag.putUuid(NbtIds.DEATH_LOCKS_LATEST, id));
     }
 }

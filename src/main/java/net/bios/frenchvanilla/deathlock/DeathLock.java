@@ -1,5 +1,6 @@
 package net.bios.frenchvanilla.deathlock;
 
+import net.bios.frenchvanilla.NbtIds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -26,29 +27,29 @@ public final class DeathLock {
     }
 
     public static DeathLock readFromNbt(NbtCompound tag) {
-        Identifier dimension = new Identifier(tag.getString("dimension"));
+        Identifier dimension = new Identifier(tag.getString(NbtIds.DEATH_LOCK_DIMENSION));
         BlockPos position = new BlockPos(
-                tag.getInt("x"),
-                tag.getInt("y"),
-                tag.getInt("z")
+                tag.getInt(NbtIds.DEATH_LOCK_X),
+                tag.getInt(NbtIds.DEATH_LOCK_Y),
+                tag.getInt(NbtIds.DEATH_LOCK_Z)
         );
-        UUID ownerId = tag.getUuid("owner");
-        NbtList items = tag.getList("items", NbtElement.COMPOUND_TYPE);
+        UUID ownerId = tag.getUuid(NbtIds.DEATH_LOCK_OWNER);
+        NbtList items = tag.getList(NbtIds.DEATH_LOCK_ITEMS, NbtElement.COMPOUND_TYPE);
         ArrayList<ItemStack> stacks = new ArrayList<>(items.size());
         for (int i = 0; i < items.size(); i++) {
             stacks.add(i, ItemStack.fromNbt(items.getCompound(i)));
         }
-        int xpLevel = tag.getInt("xp_level");
+        int xpLevel = tag.getInt(NbtIds.DEATH_LOCK_LEVEL);
 
         return new DeathLock(dimension, position, ownerId, stacks, xpLevel);
     }
 
     public void writeToNbt(NbtCompound tag) {
-        tag.putString("dimension", dimension.toString());
-        tag.putInt("x", position.getX());
-        tag.putInt("y", position.getY());
-        tag.putInt("z", position.getZ());
-        tag.putUuid("owner", ownerId);
+        tag.putString(NbtIds.DEATH_LOCK_DIMENSION, dimension.toString());
+        tag.putInt(NbtIds.DEATH_LOCK_X, position.getX());
+        tag.putInt(NbtIds.DEATH_LOCK_Y, position.getY());
+        tag.putInt(NbtIds.DEATH_LOCK_Z, position.getZ());
+        tag.putUuid(NbtIds.DEATH_LOCK_OWNER, ownerId);
 
         NbtList items = new NbtList();
         for (ItemStack stack : this.stacks) {
@@ -57,9 +58,9 @@ public final class DeathLock {
             }
         }
 
-        tag.put("items", items);
+        tag.put(NbtIds.DEATH_LOCK_ITEMS, items);
 
-        tag.putInt("xp_level", xpLevel);
+        tag.putInt(NbtIds.DEATH_LOCK_LEVEL, xpLevel);
     }
 
     public Identifier dimension() {

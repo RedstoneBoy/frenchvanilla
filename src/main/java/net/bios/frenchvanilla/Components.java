@@ -12,6 +12,7 @@ import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
 import net.bios.frenchvanilla.deathlock.DeathKeyItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
+import net.bios.frenchvanilla.player_settings.PlayerSettingsComponent;
 import net.bios.frenchvanilla.timber.TimberTaskManagerComponent;
 import net.minecraft.item.Items;
 
@@ -25,6 +26,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public static final ComponentKey<HomeComponent> HOME =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("home"), HomeComponent.class);
 
+    public static final ComponentKey<PlayerSettingsComponent> PLAYER_SETTINGS =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_settings"), PlayerSettingsComponent.class);
+
     public static final ComponentKey<TimberTaskManagerComponent> TIMBER_TASKS =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("timber_tasks"), TimberTaskManagerComponent.class);
 
@@ -32,6 +36,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
         registry.registerForPlayers(DEATH_LOCKS, (p) -> new DeathLocksComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(HOME, (p) -> new HomeComponent(), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(PLAYER_SETTINGS, (p) -> new PlayerSettingsComponent(), RespawnCopyStrategy.ALWAYS_COPY);
     }
 
     @Override

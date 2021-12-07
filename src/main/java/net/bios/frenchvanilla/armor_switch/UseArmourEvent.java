@@ -14,6 +14,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import static net.bios.frenchvanilla.Components.PLAYER_SETTINGS;
+
 public class UseArmourEvent implements UseItemCallback {
     public static void register() {
         UseItemCallback.EVENT.register(new UseArmourEvent());
@@ -23,6 +25,7 @@ public class UseArmourEvent implements UseItemCallback {
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         if (world.isClient
                 || !FrenchVanilla.config.armorSwapping
+                || !PLAYER_SETTINGS.get(player).settings().armorSwapping.value
                 || hand != Hand.MAIN_HAND
                 || player.getStackInHand(hand).isEmpty()
                 || !(player.getStackInHand(hand).getItem() instanceof Wearable))

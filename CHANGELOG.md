@@ -1,3 +1,9 @@
+## Version 0.9
+
+- BREAKING: Various components now use different NBT paths, worlds that used any previous version of this mod are now
+  incompatible with this version
+- Added per-player settings using the /my_settings command
+
 ## Version 0.8.1
 
 - Include CompleteConfig

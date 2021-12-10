@@ -1,4 +1,4 @@
-package net.bios.frenchvanilla.player_settings;
+package net.bios.frenchvanilla.config.setting;
 
 import net.minecraft.nbt.NbtByte;
 import net.minecraft.nbt.NbtElement;
@@ -7,7 +7,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-public class PlayerBooleanSetting implements PlayerSetting {
+public class BooleanSetting implements Setting {
     private static Text TRUE = new LiteralText("ENABLED")
             .setStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN));
     private static Text FALSE = new LiteralText("DISABLED")
@@ -16,7 +16,7 @@ public class PlayerBooleanSetting implements PlayerSetting {
     private boolean defaultValue;
     public boolean value;
 
-    public PlayerBooleanSetting(boolean defaultValue) {
+    public BooleanSetting(boolean defaultValue) {
         this.defaultValue = defaultValue;
         this.value = defaultValue;
     }
@@ -44,5 +44,15 @@ public class PlayerBooleanSetting implements PlayerSetting {
                 .append(new LiteralText(" (default: "))
                 .append(defText)
                 .append(")");
+    }
+
+    @Override
+    public Object getValue() {
+        return this.value;
+    }
+
+    @Override
+    public void setValue(Object obj) throws ClassCastException {
+        this.value = (Boolean) obj;
     }
 }

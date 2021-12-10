@@ -24,7 +24,7 @@ public class UseCampfireEvent implements UseBlockCallback {
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         if (world.isClient
-                || !FrenchVanilla.config.campfireResting
+                || !FrenchVanilla.config.campfireResting.value
                 || player.isSpectator()
                 || hitResult.getType() != HitResult.Type.BLOCK
                 || hand != Hand.MAIN_HAND

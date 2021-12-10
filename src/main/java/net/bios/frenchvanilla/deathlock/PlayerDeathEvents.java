@@ -21,7 +21,7 @@ public class PlayerDeathEvents implements ServerPlayerEvents.AllowDeath, ServerP
 
     @Override
     public boolean allowDeath(ServerPlayerEntity player, DamageSource damageSource, float damageAmount) {
-        if (!FrenchVanilla.config.deathLocks
+        if (!FrenchVanilla.config.deathLocks.value
                 || player.getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
             return true;
 
@@ -56,7 +56,7 @@ public class PlayerDeathEvents implements ServerPlayerEvents.AllowDeath, ServerP
 
     @Override
     public void afterRespawn(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {
-        if (!FrenchVanilla.config.deathLocks
+        if (!FrenchVanilla.config.deathLocks.value
                 || newPlayer.getServer().getGameRules().getBoolean(GameRules.KEEP_INVENTORY))
             return;
 

@@ -16,7 +16,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class HomeCommands {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("sethome").requires(source -> FrenchVanilla.config.homes).executes(context -> {
+        dispatcher.register(literal("sethome").requires(source -> FrenchVanilla.config.homes.value).executes(context -> {
             var player = context.getSource().getPlayer();
             var homeComponent = HOME.get(player);
             homeComponent.home = new Home(player.getWorld().getRegistryKey().getValue(), player.getPos());
@@ -27,7 +27,7 @@ public class HomeCommands {
             return 1;
         }));
 
-        dispatcher.register(literal("home").requires(source -> FrenchVanilla.config.homes).executes(context -> {
+        dispatcher.register(literal("home").requires(source -> FrenchVanilla.config.homes.value).executes(context -> {
                     var player = context.getSource().getPlayer();
 
                     if (!teleportToHome(player, player)) {

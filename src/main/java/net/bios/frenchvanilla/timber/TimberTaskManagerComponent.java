@@ -26,10 +26,10 @@ public class TimberTaskManagerComponent implements ServerTickingComponent {
 
     @Override
     public void serverTick() {
-        if (!FrenchVanilla.config.timber) return;
+        if (!FrenchVanilla.config.timber.value) return;
 
         int tasks = 0;
-        while (tasks < FrenchVanilla.config.timberTasksPerTick && !timberTasks.isEmpty()) {
+        while (tasks < FrenchVanilla.config.timberTasksPerTick.value && !timberTasks.isEmpty()) {
             boolean remove = timberTasks.peek().run();
             if (remove) timberTasks.remove();
             tasks += 1;

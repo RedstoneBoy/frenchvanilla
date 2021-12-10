@@ -25,7 +25,7 @@ public class UseDeathKeyEvent implements UseItemCallback {
 
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
-        if (!FrenchVanilla.config.deathLocks
+        if (!FrenchVanilla.config.deathLocks.value
                 || world.isClient
                 || !DeathKeyItemHelper.isDeathKey(player.getStackInHand(hand)))
             return TypedActionResult.pass(ItemStack.EMPTY);
@@ -41,11 +41,11 @@ public class UseDeathKeyEvent implements UseItemCallback {
                 DeathLock lock = lockOptional.get();
 
                 if (player.getEntityWorld().getRegistryKey().getValue().equals(lock.dimension())
-                        && lock.position().isWithinDistance(player.getBlockPos(), FrenchVanilla.config.deathKeyUnlockDistance)) {
+                        && lock.position().isWithinDistance(player.getBlockPos(), FrenchVanilla.config.deathKeyUnlockDistance.value)) {
                     // Unlock
                     player.sendMessage(new LiteralText("Unlocking...").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false);
 
-                    if (FrenchVanilla.config.restoreXp) {
+                    if (FrenchVanilla.config.restoreXp.value) {
                         player.addExperienceLevels(lock.xpLevel());
                     }
 

@@ -1,12 +1,13 @@
 package net.bios.frenchvanilla;
 
+import net.bios.frenchvanilla.config.ModConfig;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
 public class FrenchVanilla implements ModInitializer {
     public static final String ID = "frenchvanilla";
 
-    public static Settings config;
+    public static ModConfig config;
 
     public static Identifier identifier(String value) {
         return new Identifier(ID, value);
@@ -14,7 +15,7 @@ public class FrenchVanilla implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        config = new Settings();
+        config = new ModConfig();
         config.load();
 
         Events.register();

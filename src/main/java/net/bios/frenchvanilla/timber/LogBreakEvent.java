@@ -11,7 +11,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import static net.bios.frenchvanilla.Components.PLAYER_SETTINGS;
+import static net.bios.frenchvanilla.Components.PLAYER_CONFIG;
 
 public class LogBreakEvent implements PlayerBlockBreakEvents.Before {
     public static void register() {
@@ -21,8 +21,8 @@ public class LogBreakEvent implements PlayerBlockBreakEvents.Before {
     @Override
     public boolean beforeBlockBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         if (world.isClient
-                || !FrenchVanilla.config.timber
-                || !PLAYER_SETTINGS.get(player).settings().timber.value
+                || !FrenchVanilla.config.timber.value
+                || !PLAYER_CONFIG.get(player).config().timber.value
                 || !TreeType.isLog(state.getBlock()))
             return true;
 

@@ -1,25 +1,26 @@
-package net.bios.frenchvanilla.player_settings;
+package net.bios.frenchvanilla.player_config;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
+import net.bios.frenchvanilla.config.setting.Setting;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 
 import java.util.Map;
 
-public class PlayerSettingsComponent implements Component {
-    private PlayerSettings settings;
+public class PlayerConfigComponent implements Component {
+    private PlayerConfig config;
 
-    public PlayerSettings settings() {
-        return this.settings;
+    public PlayerConfig config() {
+        return this.config;
     }
 
-    public PlayerSettingsComponent() {
-        this.settings = new PlayerSettings();
+    public PlayerConfigComponent() {
+        this.config = new PlayerConfig();
     }
 
     @Override
     public void readFromNbt(NbtCompound tag) {
-        for (Map.Entry<String, PlayerSetting> setting : this.settings.settings().entrySet()) {
+        for (Map.Entry<String, Setting> setting : this.config.settings().entrySet()) {
             NbtElement element = tag.get(setting.getKey());
             if (element != null) {
                 setting.getValue().readNbt(element);
@@ -29,7 +30,7 @@ public class PlayerSettingsComponent implements Component {
 
     @Override
     public void writeToNbt(NbtCompound tag) {
-        for (Map.Entry<String, PlayerSetting> setting : this.settings.settings().entrySet()) {
+        for (Map.Entry<String, Setting> setting : this.config.settings().entrySet()) {
             tag.put(setting.getKey(), setting.getValue().toNbt());
         }
     }

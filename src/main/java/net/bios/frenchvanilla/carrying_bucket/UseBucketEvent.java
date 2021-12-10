@@ -21,7 +21,7 @@ public class UseBucketEvent implements UseItemCallback {
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         if (world.isClient
-                || !FrenchVanilla.config.carryingBucket
+                || !FrenchVanilla.config.carryingBucket.value
                 || !hand.equals(Hand.MAIN_HAND)
                 || !Components.CARRYING_BUCKET.isProvidedBy(player.getStackInHand(hand))
                 || !Components.CARRYING_BUCKET.get(player.getStackInHand(hand)).isCarryingBucket())

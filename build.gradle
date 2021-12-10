@@ -37,6 +37,10 @@ repositories {
     maven {
         url 'https://maven.nucleoid.xyz'
     }
+
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
 }
 
 dependencies {
@@ -51,6 +55,8 @@ dependencies {
     modImplementation include("de.siphalor:nbtcrafting-1.18:2+")
 
     modImplementation include("eu.pb4:sgui:1.0.0-rc6+1.18-pre5")
+
+    modImplementation include("me.lucko:fabric-permissions-api:0.1-SNAPSHOT")
 
     modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:4.0.0")
     modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:4.0.0")

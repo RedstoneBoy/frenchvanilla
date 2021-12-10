@@ -20,7 +20,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class DeathsCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("deaths").requires(source -> FrenchVanilla.config.deathLocks).executes(context -> {
+        dispatcher.register(literal("deaths").requires(source -> FrenchVanilla.config.deathLocks.value).executes(context -> {
             ServerPlayerEntity player = context.getSource().getPlayer();
             DeathLocksComponent locks = DEATH_LOCKS.get(player);
 

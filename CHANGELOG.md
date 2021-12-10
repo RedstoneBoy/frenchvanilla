@@ -1,3 +1,10 @@
+## Version 1.0.0
+
+- Added dependencies: NBTCrafting, SGui
+- Added carrying buckets
+    - Backpacks with 9 slots
+    - Crafted by surrounding a bucket with 4 leather in a plus shape
+
 ## Version 0.9
 
 - BREAKING: Various components now use different NBT paths, worlds that used any previous version of this mod are now

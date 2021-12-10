@@ -9,6 +9,7 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
+import net.bios.frenchvanilla.carrying_bucket.CarryingBucketItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathKeyItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
@@ -17,6 +18,9 @@ import net.bios.frenchvanilla.timber.TimberTaskManagerComponent;
 import net.minecraft.item.Items;
 
 public class Components implements EntityComponentInitializer, ItemComponentInitializer, WorldComponentInitializer {
+    public static final ComponentKey<CarryingBucketItemComponent> CARRYING_BUCKET =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("carrying_bucket"), CarryingBucketItemComponent.class);
+
     public static final ComponentKey<DeathLocksComponent> DEATH_LOCKS =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("deathlocks"), DeathLocksComponent.class);
 
@@ -41,6 +45,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 
     @Override
     public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
+        registry.register(Items.BUCKET, CARRYING_BUCKET, CarryingBucketItemComponent::new);
         registry.register(Items.ARROW, DEATH_KEY, DeathKeyItemComponent::new);
     }
 

@@ -10,11 +10,12 @@ This mod can also be installed on clients for use in single-player worlds.
 
 ## Features
 
-- Rest at campfires
-    - With an empty hand, right-click a campfire placed next to a bed to skip to night
 - Armour swapping
     - Right click with armour or elytra to replace the armour you're currently wearing
     - Can be enabled per-player
+- Carrying buckets
+    - Backpack with 9 slots
+    - Crafted by surrounding a bucket with 4 leather in a plus shape
 - Death Locks
     - Dying creates a new death lock
     - A player gets a death key on respawn or through the /deaths command
@@ -28,6 +29,8 @@ This mod can also be installed on clients for use in single-player worlds.
     - Per-Player settings
     - Use /my_settings to see your settings
     - Modify each setting with /my_setting <setting> <new_value>
+- Rest at campfires
+    - With an empty hand, right-click a campfire placed next to a bed to skip to night
 - Timber
     - Break a log on a tree to break the entire tree
     - Works on nether trees

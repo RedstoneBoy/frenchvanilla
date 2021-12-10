@@ -1,6 +1,8 @@
 package net.bios.frenchvanilla;
 
 public class NbtIds {
+    public static String CARRYING_BUCKET_ITEMS = "items";
+    
     public static String DEATH_LOCK_ID = "lockid";
     public static String DEATH_LOCK_DIMENSION = "dimension";
     public static String DEATH_LOCK_X = "x";

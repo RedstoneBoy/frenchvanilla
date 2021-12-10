@@ -20,7 +20,7 @@ public class DeathKeyItemHelper {
     }
 
     public static boolean isDeathKey(ItemStack stack) {
-        if (stack.isEmpty() || stack.getItem() != Items.ARROW)
+        if (stack.isEmpty() || !DEATH_KEY.isProvidedBy(stack))
             return false;
 
         return DEATH_KEY.get(stack).getLockId().isPresent();

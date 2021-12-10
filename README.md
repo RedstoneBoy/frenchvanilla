@@ -8,11 +8,21 @@ This mod can also be installed on clients for use in single-player worlds.
 
 - [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 
+### Optional
+
+- Permissions provider (e.g. LuckPerms)
+
 ## Features
 
 - Armour swapping
     - Right click with armour or elytra to replace the armour you're currently wearing
     - Can be enabled per-player
+- Commands
+    - /fv_config
+        - Change config settings
+        - Permission: frenchvanilla.config or permission-level 4
+    - /my_config
+        - See Player config
 - Carrying buckets
     - Backpack with 9 slots
     - Crafted by surrounding a bucket with 4 leather in a plus shape
@@ -25,10 +35,10 @@ This mod can also be installed on clients for use in single-player worlds.
     - Use /sethome to set your home
     - Use /home to teleport to your home
     - Operators can teleport to other players' homes
-- Player Settings
-    - Per-Player settings
-    - Use /my_settings to see your settings
-    - Modify each setting with /my_setting <setting> <new_value>
+- Player config
+    - Per-Player config
+    - Use /my_config to see your settings
+    - Modify each setting with /my_config <setting> <new_value>
 - Rest at campfires
     - With an empty hand, right-click a campfire placed next to a bed to skip to night
 - Timber

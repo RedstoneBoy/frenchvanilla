@@ -1,3 +1,9 @@
+## Version 1.1.0
+
+- Added dependency: fabric-permissions-api
+- Added /fv_config command to change settings
+    - Permission: frenchvanilla.config or permission-level 4
+
 ## Version 1.0.0
 
 - Added dependencies: NBTCrafting, SGui

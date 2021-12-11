@@ -4,6 +4,7 @@ import net.bios.frenchvanilla.config.ConfigCommand;
 import net.bios.frenchvanilla.deathlock.DeathsCommand;
 import net.bios.frenchvanilla.home.HomeCommands;
 import net.bios.frenchvanilla.player_config.PlayerConfigCommand;
+import net.bios.frenchvanilla.teleport.TeleportCommands;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 
 public class Commands {
@@ -13,6 +14,7 @@ public class Commands {
             DeathsCommand.register(dispatcher);
             HomeCommands.register(dispatcher);
             PlayerConfigCommand.register(dispatcher);
+            TeleportCommands.register(dispatcher);
         });
     }
 }

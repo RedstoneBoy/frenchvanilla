@@ -19,6 +19,8 @@ public final class ModConfigData extends Config implements ConfigContainer, Conf
     public boolean homes = true;
     public boolean playerConfig = true;
     public boolean restoreXp = true;
+    public boolean teleport = true;
+    public int teleportExpireTime = 10;
     public boolean timber = true;
     public int timberTasksPerTick = 54;
 }

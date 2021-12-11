@@ -13,6 +13,8 @@ public class ModConfig extends ConfigSettings {
     public BooleanSetting homes = new BooleanSetting(true);
     public BooleanSetting playerConfig = new BooleanSetting(true);
     public BooleanSetting restoreXp = new BooleanSetting(true);
+    public BooleanSetting teleport = new BooleanSetting(true);
+    public IntegerSetting teleportExpireTime = new IntegerSetting(10);
     public BooleanSetting timber = new BooleanSetting(true);
     public IntegerSetting timberTasksPerTick = new IntegerSetting(54);
 

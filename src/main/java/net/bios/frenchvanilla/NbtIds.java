@@ -2,7 +2,7 @@ package net.bios.frenchvanilla;
 
 public class NbtIds {
     public static String CARRYING_BUCKET_ITEMS = "items";
-    
+
     public static String DEATH_LOCK_ID = "lockid";
     public static String DEATH_LOCK_DIMENSION = "dimension";
     public static String DEATH_LOCK_X = "x";
@@ -16,4 +16,7 @@ public class NbtIds {
     public static String DEATH_LOCKS_LOCK = "lock";
 
     public static String HOME = "home";
+
+    public static String TELEPORT_REQUESTED_AT = "requested_at";
+    public static String TELEPORT_TO_REQUESTER = "teleport_to_requester";
 }

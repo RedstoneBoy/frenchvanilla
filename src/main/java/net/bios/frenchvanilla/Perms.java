@@ -6,4 +6,5 @@ public class Perms {
     }
 
     public static String CONFIG = permission("config");
+    public static String TELEPORT = permission("teleport");
 }

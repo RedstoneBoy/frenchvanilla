@@ -14,6 +14,7 @@ import net.bios.frenchvanilla.deathlock.DeathKeyItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
 import net.bios.frenchvanilla.player_config.PlayerConfigComponent;
+import net.bios.frenchvanilla.player_config.TeleportComponent;
 import net.bios.frenchvanilla.timber.TimberTaskManagerComponent;
 import net.minecraft.item.Items;
 
@@ -33,6 +34,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public static final ComponentKey<PlayerConfigComponent> PLAYER_CONFIG =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_config"), PlayerConfigComponent.class);
 
+    public static final ComponentKey<TeleportComponent> TELEPORT =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("teleport"), TeleportComponent.class);
+
     public static final ComponentKey<TimberTaskManagerComponent> TIMBER_TASKS =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("timber_tasks"), TimberTaskManagerComponent.class);
 
@@ -41,6 +45,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
         registry.registerForPlayers(DEATH_LOCKS, (p) -> new DeathLocksComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(HOME, (p) -> new HomeComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(PLAYER_CONFIG, (p) -> new PlayerConfigComponent(), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(TELEPORT, (p) -> new TeleportComponent(), RespawnCopyStrategy.ALWAYS_COPY);
     }
 
     @Override

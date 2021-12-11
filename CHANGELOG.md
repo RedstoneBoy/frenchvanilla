@@ -1,3 +1,12 @@
+## Version 1.2.0
+
+- Support 1.18.x
+- Teleport commands
+    - `/tpto <player>` - request to teleport command user to player
+    - `/tptome <player>` - request a player to teleport to command user
+    - `/tpa` - accept a teleport request if there is only one
+    - `/tpa <player>` - accept a teleport request from a specific player
+
 ## Version 1.1.0
 
 - Added dependency: fabric-permissions-api

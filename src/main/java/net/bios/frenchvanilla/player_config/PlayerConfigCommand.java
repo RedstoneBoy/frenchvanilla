@@ -1,6 +1,7 @@
 package net.bios.frenchvanilla.player_config;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.config.ConfigCommandHelper;
 import net.bios.frenchvanilla.config.ConfigSettings;

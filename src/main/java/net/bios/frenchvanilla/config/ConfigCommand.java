@@ -1,6 +1,7 @@
 package net.bios.frenchvanilla.config;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.Perms;

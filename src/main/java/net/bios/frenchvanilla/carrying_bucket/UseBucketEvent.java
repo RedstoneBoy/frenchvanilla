@@ -27,11 +27,14 @@ public class UseBucketEvent implements UseItemCallback {
                 || !Components.CARRYING_BUCKET.get(player.getStackInHand(hand)).isCarryingBucket())
             return TypedActionResult.pass(ItemStack.EMPTY);
 
-        ItemStack stack = player.getStackInHand(hand);
-        player.setStackInHand(hand, ItemStack.EMPTY);
-        Inventory inv = Components.CARRYING_BUCKET.get(stack).getInventory();
-        SimpleGui gui = new BucketGui(ScreenHandlerType.GENERIC_9X1, (ServerPlayerEntity) player, stack);
-        gui.setTitle(stack.getName());
+        ItemStack heldStack = player.getStackInHand(hand);
+        ItemStack openStack = heldStack.copy();
+        openStack.setCount(1);
+        heldStack.decrement(1);
+        player.setStackInHand(hand, heldStack);
+        Inventory inv = Components.CARRYING_BUCKET.get(openStack).getInventory();
+        SimpleGui gui = new BucketGui(ScreenHandlerType.GENERIC_9X1, (ServerPlayerEntity) player, openStack);
+        gui.setTitle(openStack.getName());
         for (int i = 0; i < inv.size(); i++) {
             gui.setSlotRedirect(i, new BucketSlot(inv, i));
         }

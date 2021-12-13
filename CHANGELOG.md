@@ -1,3 +1,9 @@
+## Version 1.2.1
+
+### Bug Fixes
+
+- Fixed item duping using a stack of carrying buckets
+
 ## Version 1.2.0
 
 - Support 1.18.x

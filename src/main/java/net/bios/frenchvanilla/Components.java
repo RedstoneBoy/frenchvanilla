@@ -13,6 +13,7 @@ import net.bios.frenchvanilla.carrying_bucket.CarryingBucketItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathKeyItemComponent;
 import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
+import net.bios.frenchvanilla.key_binds.PlayerBindDataComponent;
 import net.bios.frenchvanilla.player_config.PlayerConfigComponent;
 import net.bios.frenchvanilla.player_config.TeleportComponent;
 import net.bios.frenchvanilla.tasks.FrenchTaskManagerComponent;
@@ -31,6 +32,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public static final ComponentKey<HomeComponent> HOME =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("home"), HomeComponent.class);
 
+    public static final ComponentKey<PlayerBindDataComponent> PLAYER_BIND_DATA =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_bind_data"), PlayerBindDataComponent.class);
+
     public static final ComponentKey<PlayerConfigComponent> PLAYER_CONFIG =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_config"), PlayerConfigComponent.class);
 
@@ -44,6 +48,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
         registry.registerForPlayers(DEATH_LOCKS, (p) -> new DeathLocksComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(HOME, (p) -> new HomeComponent(), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(PLAYER_BIND_DATA, (p) -> new PlayerBindDataComponent(), RespawnCopyStrategy.NEVER_COPY);
         registry.registerForPlayers(PLAYER_CONFIG, (p) -> new PlayerConfigComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(TELEPORT, (p) -> new TeleportComponent(), RespawnCopyStrategy.ALWAYS_COPY);
     }

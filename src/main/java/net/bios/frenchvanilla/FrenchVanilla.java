@@ -18,6 +18,7 @@ public class FrenchVanilla implements ModInitializer {
         config = new ModConfig();
         config.load();
 
+        C2SPackets.register();
         Events.register();
     }
 }

@@ -13,6 +13,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import static net.bios.frenchvanilla.Components.PLAYER_BIND_DATA;
+
 public class OreBreakEvent implements PlayerBlockBreakEvents.Before {
     public static void register() {
         PlayerBlockBreakEvents.BEFORE.register(new OreBreakEvent());
@@ -25,10 +27,11 @@ public class OreBreakEvent implements PlayerBlockBreakEvents.Before {
                 || !FrenchBlockTags.ORE_MINER.contains(state.getBlock()))
             return true;
 
-        // TODO: Check if key-pressed (crazy stuff about to be written)
-
         ServerWorld serverWorld = (ServerWorld) world;
         ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+
+        if (!PLAYER_BIND_DATA.get(serverPlayer).data.oreMine)
+            return true;
 
         FrenchTask task = new OreMineTask(serverWorld, serverPlayer, pos);
         Components.TASKS.get(serverWorld).tasks.add(task);

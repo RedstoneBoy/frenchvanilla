@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static net.bios.frenchvanilla.Components.PLAYER_BIND_DATA;
+
 public class OreMineTask implements FrenchTask {
     private final ServerWorld world;
     private final ServerPlayerEntity player;
@@ -85,6 +87,10 @@ public class OreMineTask implements FrenchTask {
 
     @Override
     public boolean run() {
+        if (!PLAYER_BIND_DATA.get(player).data.oreMine) {
+            this.tasks.clear();
+        }
+
         if (!this.tasks.empty()) {
             this.tasks.pop().run();
         }

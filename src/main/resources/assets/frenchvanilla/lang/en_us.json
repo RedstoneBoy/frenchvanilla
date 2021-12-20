@@ -1,4 +1,5 @@
 {
+  "category.frenchvanilla": "French Vanilla",
   "chat.frenchvanilla.already_night": "It is already night",
   "chat.frenchvanilla.rested_at_campfire": "%s rested at a campfire. It is now night!",
   "config.frenchvanilla.armorSwapping": "Armor Swapping",
@@ -8,5 +9,6 @@
   "config.frenchvanilla.deathKeyUnlockDistance": "Death Key Unlock Distance",
   "config.frenchvanilla.homes": "Homes",
   "config.frenchvanilla.timber": "Timber",
-  "config.frenchvanilla.timberTasksPerTick": "Timber Tasks per Tick"
+  "config.frenchvanilla.timberTasksPerTick": "Timber Tasks per Tick",
+  "key.frenchvanilla.ore_mine": "Ore Mine"
 }

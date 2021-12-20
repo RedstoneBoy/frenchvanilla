@@ -1,5 +1,6 @@
 package net.bios.frenchvanilla.timber;
 
+import net.bios.frenchvanilla.tasks.FrenchTask;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.ItemEntity;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class TimberTask {
+public class TimberTask implements FrenchTask {
     private final ServerWorld world;
     private final ServerPlayerEntity player;
     private final BlockPos origin;
@@ -169,6 +170,7 @@ public class TimberTask {
     }
 
     // Returns true when finished
+    @Override
     public boolean run() {
         if (!tasks.empty())
             tasks.pop().run();

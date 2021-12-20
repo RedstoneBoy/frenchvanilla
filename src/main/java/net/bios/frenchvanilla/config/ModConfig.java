@@ -12,11 +12,13 @@ public class ModConfig extends ConfigSettings {
     public DoubleSetting deathKeyUnlockDistance = new DoubleSetting(10.0);
     public BooleanSetting homes = new BooleanSetting(true);
     public BooleanSetting playerConfig = new BooleanSetting(true);
+    public BooleanSetting oreMiner = new BooleanSetting(true);
+    public IntegerSetting oreMinerMaxVeinSize = new IntegerSetting(1024);
     public BooleanSetting restoreXp = new BooleanSetting(true);
+    public IntegerSetting tasksPerTick = new IntegerSetting(128);
     public BooleanSetting teleport = new BooleanSetting(true);
     public IntegerSetting teleportExpireTime = new IntegerSetting(10);
     public BooleanSetting timber = new BooleanSetting(true);
-    public IntegerSetting timberTasksPerTick = new IntegerSetting(54);
 
     public ModConfig() {
         super(new ModConfigData());

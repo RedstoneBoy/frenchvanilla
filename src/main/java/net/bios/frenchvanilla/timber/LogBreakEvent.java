@@ -30,7 +30,7 @@ public class LogBreakEvent implements PlayerBlockBreakEvents.Before {
         ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
 
         TimberTask.createTimberTask(serverWorld, serverPlayer, pos, state.getBlock())
-                .ifPresent(task -> Components.TIMBER_TASKS.get(serverWorld).timberTasks.add(task));
+                .ifPresent(task -> Components.TASKS.get(serverWorld).tasks.add(task));
 
         return true;
     }

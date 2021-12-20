@@ -35,8 +35,8 @@
       "frenchvanilla:deathkey",
       "frenchvanilla:home",
       "frenchvanilla:player_config",
-      "frenchvanilla:teleport",
-      "frenchvanilla:timber_tasks"
+      "frenchvanilla:tasks",
+      "frenchvanilla:teleport"
     ]
   }
 }

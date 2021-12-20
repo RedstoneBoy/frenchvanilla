@@ -17,10 +17,12 @@ public final class ModConfigData extends Config implements ConfigContainer, Conf
     public boolean deathLocks = true;
     public double deathKeyUnlockDistance = 10.0;
     public boolean homes = true;
+    public boolean oreMiner = true;
+    public int oreMinerMaxVeinSize = 1024;
     public boolean playerConfig = true;
     public boolean restoreXp = true;
+    public int tasksPerTick = 128;
     public boolean teleport = true;
     public int teleportExpireTime = 10;
     public boolean timber = true;
-    public int timberTasksPerTick = 54;
 }

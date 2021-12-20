@@ -15,7 +15,7 @@ import net.bios.frenchvanilla.deathlock.DeathLocksComponent;
 import net.bios.frenchvanilla.home.HomeComponent;
 import net.bios.frenchvanilla.player_config.PlayerConfigComponent;
 import net.bios.frenchvanilla.player_config.TeleportComponent;
-import net.bios.frenchvanilla.timber.TimberTaskManagerComponent;
+import net.bios.frenchvanilla.tasks.FrenchTaskManagerComponent;
 import net.minecraft.item.Items;
 
 public class Components implements EntityComponentInitializer, ItemComponentInitializer, WorldComponentInitializer {
@@ -34,11 +34,11 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public static final ComponentKey<PlayerConfigComponent> PLAYER_CONFIG =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_config"), PlayerConfigComponent.class);
 
+    public static final ComponentKey<FrenchTaskManagerComponent> TASKS =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("tasks"), FrenchTaskManagerComponent.class);
+
     public static final ComponentKey<TeleportComponent> TELEPORT =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("teleport"), TeleportComponent.class);
-
-    public static final ComponentKey<TimberTaskManagerComponent> TIMBER_TASKS =
-            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("timber_tasks"), TimberTaskManagerComponent.class);
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
@@ -56,6 +56,6 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
 
     @Override
     public void registerWorldComponentFactories(WorldComponentFactoryRegistry registry) {
-        registry.register(TIMBER_TASKS, (w) -> new TimberTaskManagerComponent());
+        registry.register(TASKS, (w) -> new FrenchTaskManagerComponent());
     }
 }

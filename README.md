@@ -36,6 +36,8 @@ This mod can also be installed on clients for use in single-player worlds.
     - Use `/sethome` to set your home
     - Use `/home` to teleport to your home
     - Operators can teleport to other players' homes
+- Ore miner
+    - Break an ore block while holding the ore mine key to break the entire vein
 - Player config
     - Per-Player config
     - Use `/my_config` to see your settings

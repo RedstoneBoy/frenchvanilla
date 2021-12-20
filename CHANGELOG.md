@@ -1,3 +1,8 @@
+## Version 1.3.0
+
+- Add Ore miner
+    - Break an ore block while holding the ore mine key to break the entire vein
+
 ## Version 1.2.1
 
 ### Bug Fixes

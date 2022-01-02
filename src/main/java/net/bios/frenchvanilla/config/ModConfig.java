@@ -19,6 +19,7 @@ public class ModConfig extends ConfigSettings {
     public BooleanSetting teleport = new BooleanSetting(true);
     public IntegerSetting teleportExpireTime = new IntegerSetting(10);
     public BooleanSetting timber = new BooleanSetting(true);
+    public BooleanSetting unpath = new BooleanSetting(true);
 
     public ModConfig() {
         super(new ModConfigData());

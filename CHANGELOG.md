@@ -1,3 +1,8 @@
+## Version 1.4.0
+
+- Add unpath
+    - Right-click a path block with a shovel to turn it into dirt
+
 ## Version 1.3.0
 
 - Add Ore miner

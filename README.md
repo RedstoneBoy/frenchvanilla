@@ -56,5 +56,5 @@ This mod can also be installed on clients for use in single-player worlds.
     - Works on nether trees
     - Only works on logs connected to naturally generated leaves (for overworld trees)
     - Can be enabled per-player
-
-Each feature can be disabled using the config.
+- Unpath
+    - Right click a path block with a shovel to turn it into dirt Each feature can be disabled using the config.

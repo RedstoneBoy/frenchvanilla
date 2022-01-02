@@ -7,6 +7,7 @@ import net.bios.frenchvanilla.deathlock.PlayerDeathEvents;
 import net.bios.frenchvanilla.deathlock.UseDeathKeyEvent;
 import net.bios.frenchvanilla.ore_miner.OreBreakEvent;
 import net.bios.frenchvanilla.timber.LogBreakEvent;
+import net.bios.frenchvanilla.unpath.UsePathEvent;
 
 public class Events {
     public static void register() {
@@ -18,5 +19,6 @@ public class Events {
         UseArmourEvent.register();
         UseBucketEvent.register();
         UseCampfireEvent.register();
+        UsePathEvent.register();
     }
 }

@@ -25,4 +25,5 @@ public final class ModConfigData extends Config implements ConfigContainer, Conf
     public boolean teleport = true;
     public int teleportExpireTime = 10;
     public boolean timber = true;
+    public boolean unpath = true;
 }

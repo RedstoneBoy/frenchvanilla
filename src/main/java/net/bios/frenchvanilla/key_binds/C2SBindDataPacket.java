@@ -18,12 +18,10 @@ public class C2SBindDataPacket {
 
     public static void register() {
         ServerPlayNetworking.registerGlobalReceiver(PACKET_ID, (server, player, handler, buf, responseSender) -> {
-            server.execute(() -> {
-                NbtCompound nbt = buf.readNbt();
-                if (nbt != null) {
-                    PLAYER_BIND_DATA.get(player).update(BindData.fromNbt(nbt));
-                }
-            });
+            NbtCompound nbt = buf.readNbt();
+            if (nbt != null) {
+                server.execute(() -> PLAYER_BIND_DATA.get(player).update(BindData.fromNbt(nbt)));
+            }
         });
     }
 }

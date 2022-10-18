@@ -16,6 +16,7 @@ import net.bios.frenchvanilla.home.HomeComponent;
 import net.bios.frenchvanilla.key_binds.PlayerBindDataComponent;
 import net.bios.frenchvanilla.player_config.PlayerConfigComponent;
 import net.bios.frenchvanilla.player_config.TeleportComponent;
+import net.bios.frenchvanilla.sanity.PlayerSanityComponent;
 import net.bios.frenchvanilla.tasks.FrenchTaskManagerComponent;
 import net.minecraft.item.Items;
 
@@ -38,6 +39,9 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
     public static final ComponentKey<PlayerConfigComponent> PLAYER_CONFIG =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_config"), PlayerConfigComponent.class);
 
+    public static final ComponentKey<PlayerSanityComponent> PLAYER_SANITY =
+            ComponentRegistry.getOrCreate(FrenchVanilla.identifier("player_sanity"), PlayerSanityComponent.class);
+
     public static final ComponentKey<FrenchTaskManagerComponent> TASKS =
             ComponentRegistry.getOrCreate(FrenchVanilla.identifier("tasks"), FrenchTaskManagerComponent.class);
 
@@ -50,6 +54,7 @@ public class Components implements EntityComponentInitializer, ItemComponentInit
         registry.registerForPlayers(HOME, (p) -> new HomeComponent(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(PLAYER_BIND_DATA, (p) -> new PlayerBindDataComponent(), RespawnCopyStrategy.NEVER_COPY);
         registry.registerForPlayers(PLAYER_CONFIG, (p) -> new PlayerConfigComponent(), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(PLAYER_SANITY, (p) -> new PlayerSanityComponent(), RespawnCopyStrategy.NEVER_COPY);
         registry.registerForPlayers(TELEPORT, (p) -> new TeleportComponent(), RespawnCopyStrategy.ALWAYS_COPY);
     }
 

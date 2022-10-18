@@ -9,7 +9,7 @@ import net.bios.frenchvanilla.config.setting.IntegerSetting;
 import net.bios.frenchvanilla.config.setting.Setting;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -22,9 +22,9 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class ConfigCommandHelper {
     public static Text settingText(String settingKey, Setting setting) {
-        return new LiteralText("")
-                .append(new LiteralText(settingKey).setStyle(Style.EMPTY.withColor(Formatting.AQUA)))
-                .append(new LiteralText(": "))
+        return Text.literal("")
+                .append(Text.literal(settingKey).setStyle(Style.EMPTY.withColor(Formatting.AQUA)))
+                .append(": ")
                 .append(setting.text());
     }
 
@@ -45,14 +45,14 @@ public class ConfigCommandHelper {
     private static LiteralArgumentBuilder<ServerCommandSource> booleanSetting(String settingKey, Function<ServerPlayerEntity, ConfigSettings> configProvider) {
         return literal(settingKey)
                 .executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
                     var setting = (BooleanSetting) configProvider.apply(player).settings().get(settingKey);
 
                     player.sendMessage(settingText(settingKey, setting), false);
                     return 1;
                 })
                 .then(literal("true").executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
 
                     ConfigSettings config = configProvider.apply(player);
                     var setting = (BooleanSetting) config.settings().get(settingKey);
@@ -63,7 +63,7 @@ public class ConfigCommandHelper {
                     return 1;
                 }))
                 .then(literal("false").executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
 
                     ConfigSettings config = configProvider.apply(player);
                     var setting = (BooleanSetting) config.settings().get(settingKey);
@@ -78,14 +78,14 @@ public class ConfigCommandHelper {
     private static LiteralArgumentBuilder<ServerCommandSource> doubleSetting(String settingKey, Function<ServerPlayerEntity, ConfigSettings> configProvider) {
         return literal(settingKey)
                 .executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
                     var setting = (DoubleSetting) configProvider.apply(player).settings().get(settingKey);
 
                     player.sendMessage(settingText(settingKey, setting), false);
                     return 1;
                 })
                 .then(argument("value", DoubleArgumentType.doubleArg()).executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
 
                     ConfigSettings config = configProvider.apply(player);
                     var setting = (DoubleSetting) config.settings().get(settingKey);
@@ -100,14 +100,14 @@ public class ConfigCommandHelper {
     private static LiteralArgumentBuilder<ServerCommandSource> integerSetting(String settingKey, Function<ServerPlayerEntity, ConfigSettings> configProvider) {
         return literal(settingKey)
                 .executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
                     var setting = (IntegerSetting) configProvider.apply(player).settings().get(settingKey);
 
                     player.sendMessage(settingText(settingKey, setting), false);
                     return 1;
                 })
                 .then(argument("value", IntegerArgumentType.integer()).executes(context -> {
-                    ServerPlayerEntity player = context.getSource().getPlayer();
+                    ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
 
                     ConfigSettings config = configProvider.apply(player);
                     var setting = (IntegerSetting) config.settings().get(settingKey);

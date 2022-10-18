@@ -1,14 +1,13 @@
 package net.bios.frenchvanilla.config;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.Perms;
 import net.bios.frenchvanilla.config.setting.Setting;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 
 import java.util.Map;
 
@@ -21,9 +20,9 @@ public class ConfigCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         var command = literal("fv_config").requires(Permissions.require(Perms.CONFIG, 4)).executes(context -> {
-            ServerPlayerEntity player = context.getSource().getPlayer();
+            ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
 
-            player.sendMessage(new LiteralText("Settings:"), false);
+            player.sendMessage(Text.literal("Settings:"), false);
 
             for (Map.Entry<String, Setting> entry : FrenchVanilla.config.settings().entrySet()) {
                 player.sendMessage(ConfigCommandHelper.settingText(entry.getKey(), entry.getValue()), false);

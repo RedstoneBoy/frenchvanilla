@@ -1,13 +1,13 @@
 package net.bios.frenchvanilla;
 
-import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.block.Block;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
+import net.minecraft.util.registry.Registry;
 
 public class FrenchBlockTags {
-    private static final Tag<Block> createTag(String id) {
-        return TagFactory.BLOCK.create(FrenchVanilla.identifier(id));
+    private static final TagKey<Block> createTag(String id) {
+        return TagKey.of(Registry.BLOCK_KEY, FrenchVanilla.identifier(id));
     }
 
-    public static final Tag<Block> ORE_MINER = createTag("ore_miner");
+    public static final TagKey<Block> ORE_MINER = createTag("ore_miner");
 }

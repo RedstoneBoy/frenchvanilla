@@ -4,8 +4,9 @@ import net.bios.frenchvanilla.FrenchVanilla;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -43,7 +44,7 @@ public class UseDeathKeyEvent implements UseItemCallback {
                 if (player.getEntityWorld().getRegistryKey().getValue().equals(lock.dimension())
                         && lock.position().isWithinDistance(player.getBlockPos(), FrenchVanilla.config.deathKeyUnlockDistance.value)) {
                     // Unlock
-                    player.sendMessage(new LiteralText("Unlocking...").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false);
+                    player.sendMessage(Text.literal("Unlocking...").setStyle(Style.EMPTY.withColor(Formatting.GREEN)), false);
 
                     if (FrenchVanilla.config.restoreXp.value) {
                         player.addExperienceLevels(lock.xpLevel());
@@ -64,7 +65,7 @@ public class UseDeathKeyEvent implements UseItemCallback {
 
                     // Remove lock and key if all items are removed
                     if (lock.stacks().size() == 0) {
-                        player.sendMessage(new LiteralText("All items recovered!").setStyle(Style.EMPTY.withColor(Formatting.BLUE)), false);
+                        player.sendMessage(Text.literal("All items recovered!").setStyle(Style.EMPTY.withColor(Formatting.BLUE)), false);
 
                         player.setStackInHand(hand, ItemStack.EMPTY);
 
@@ -72,19 +73,19 @@ public class UseDeathKeyEvent implements UseItemCallback {
 
                         return TypedActionResult.consume(ItemStack.EMPTY);
                     } else {
-                        player.sendMessage(new LiteralText("Your inventory is full!"), false);
+                        player.sendMessage(Text.literal("Your inventory is full!"), false);
                         return TypedActionResult.success(ItemStack.EMPTY);
                     }
                 } else {
                     // Give lock position
                     BlockPos pos = lock.position();
-                    player.sendMessage(new LiteralText("The lock is in " + lock.dimension() + " at X: " + pos.getX() + ", Y: " + pos.getY() + ", Z: " + pos.getZ()), false);
+                    player.sendMessage(Text.literal("The lock is in " + lock.dimension() + " at X: " + pos.getX() + ", Y: " + pos.getY() + ", Z: " + pos.getZ()), false);
 
                     return TypedActionResult.success(ItemStack.EMPTY);
                 }
             } else {
                 // Key has an invalid lock id
-                player.sendMessage(new LiteralText("This is an invalid key, removing it...")
+                player.sendMessage(Text.literal("This is an invalid key, removing it...")
                         .setStyle(Style.EMPTY.withColor(Formatting.RED)), false);
                 player.setStackInHand(hand, ItemStack.EMPTY);
 

@@ -5,11 +5,13 @@ import net.bios.frenchvanilla.FrenchBlockTags;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.tasks.FrenchTask;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.fabric.impl.tag.convention.TagRegistration;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.TagEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -24,7 +26,7 @@ public class OreBreakEvent implements PlayerBlockBreakEvents.Before {
     public boolean beforeBlockBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         if (world.isClient
                 || !FrenchVanilla.config.oreMiner.value
-                || !FrenchBlockTags.ORE_MINER.contains(state.getBlock()))
+                || state.isIn(FrenchBlockTags.ORE_MINER))
             return true;
 
         ServerWorld serverWorld = (ServerWorld) world;

@@ -7,7 +7,8 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -36,16 +37,16 @@ public class UseCampfireEvent implements UseBlockCallback {
             BlockPos bedPos = SleepUtil.findBedNextTo(sworld, hitResult.getBlockPos());
             if (bedPos != null && sworld.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)) {
                 if (sworld.getTimeOfDay() % 24000L > 13000L) {
-                    player.sendSystemMessage(Texts.ALREADY_NIGHT, player.getUuid());
+                    player.sendMessage(Texts.ALREADY_NIGHT);
 
                     return ActionResult.FAIL;
                 } else {
                     long timeToAdd = 13000L - sworld.getTimeOfDay() % 24000L;
                     sworld.setTimeOfDay(sworld.getTimeOfDay() + timeToAdd);
 
-                    sworld.getPlayers().forEach(p -> p.sendSystemMessage(new LiteralText("")
+                    sworld.getPlayers().forEach(p -> p.sendMessage(Text.literal("")
                             .append(player.getDisplayName())
-                            .append(Texts.RESTED_AT_CAMPFIRE), p.getUuid()));
+                            .append(Texts.RESTED_AT_CAMPFIRE)));
                 }
 
                 return ActionResult.SUCCESS;

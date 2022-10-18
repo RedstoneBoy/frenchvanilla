@@ -2,7 +2,7 @@ package net.bios.frenchvanilla.config.setting;
 
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtInt;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Text;
 
 public class IntegerSetting implements Setting {
@@ -30,10 +30,10 @@ public class IntegerSetting implements Setting {
 
     @Override
     public Text text() {
-        return new LiteralText("")
-                .append(new LiteralText(Double.toString(this.value)))
-                .append(new LiteralText(" (default: "))
-                .append(new LiteralText(Double.toString(this.defaultValue)))
+        return Text.literal("")
+                .append(Double.toString(this.value))
+                .append(" (default: ")
+                .append(Double.toString(this.defaultValue))
                 .append(")");
     }
 

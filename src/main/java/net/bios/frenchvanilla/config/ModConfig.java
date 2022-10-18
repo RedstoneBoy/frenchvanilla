@@ -15,6 +15,7 @@ public class ModConfig extends ConfigSettings {
     public BooleanSetting oreMiner = new BooleanSetting(true);
     public IntegerSetting oreMinerMaxVeinSize = new IntegerSetting(1024);
     public BooleanSetting restoreXp = new BooleanSetting(true);
+    public BooleanSetting sanity = new BooleanSetting(true);
     public IntegerSetting tasksPerTick = new IntegerSetting(128);
     public BooleanSetting teleport = new BooleanSetting(true);
     public IntegerSetting teleportExpireTime = new IntegerSetting(10);

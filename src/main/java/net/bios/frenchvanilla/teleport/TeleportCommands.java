@@ -1,15 +1,18 @@
 package net.bios.frenchvanilla.teleport;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.bios.frenchvanilla.Components;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.Perms;
+import net.bios.frenchvanilla.player_config.TeleportComponent;
 import net.bios.frenchvanilla.player_config.TeleportRequest;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
+import net.minecraft.text.Text;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -23,21 +26,21 @@ public class TeleportCommands {
                 .requires(source -> FrenchVanilla.config.teleport.value && Permissions.require(Perms.TELEPORT, 2).test(source))
                 .then(argument("player", EntityArgumentType.player())
                         .executes(context -> {
-                            ServerPlayerEntity from = context.getSource().getPlayer();
+                            ServerPlayerEntity from = context.getSource().getPlayerOrThrow();
                             ServerPlayerEntity to = EntityArgumentType.getPlayer(context, "player");
 
                             boolean requested = Components.TELEPORT.get(to)
                                     .addTeleportRequest(from.getUuid(), new TeleportRequest(Instant.now(), false));
 
                             if (!requested) {
-                                from.sendMessage(new LiteralText("You have already sent this player a teleport request, please wait until it expires, or they accept it."), false);
+                                from.sendMessage(Text.literal("You have already sent this player a teleport request, please wait until it expires, or they accept it."), false);
                             } else {
-                                from.sendMessage(new LiteralText("Sent request to teleport to ")
+                                from.sendMessage(Text.literal("Sent request to teleport to ")
                                         .append(to.getName()), false);
 
-                                to.sendMessage(new LiteralText("")
+                                to.sendMessage(Text.literal("")
                                                 .append(from.getName())
-                                                .append(new LiteralText(" wants to teleport to you, type /tpa <player> to accept"))
+                                                .append(Text.literal(" wants to teleport to you, type /tpa <player> to accept"))
                                         , false);
                             }
 
@@ -49,22 +52,22 @@ public class TeleportCommands {
                 .requires(source -> FrenchVanilla.config.teleport.value && Permissions.require(Perms.TELEPORT, 2).test(source))
                 .then(argument("player", EntityArgumentType.player())
                         .executes(context -> {
-                            ServerPlayerEntity from = context.getSource().getPlayer();
+                            ServerPlayerEntity from = context.getSource().getPlayerOrThrow();
                             ServerPlayerEntity to = EntityArgumentType.getPlayer(context, "player");
 
                             boolean requested = Components.TELEPORT.get(to)
                                     .addTeleportRequest(from.getUuid(), new TeleportRequest(Instant.now(), true));
 
                             if (!requested) {
-                                from.sendMessage(new LiteralText("You have already sent this player a teleport request, please wait until it expires, or they accept it."), false);
+                                from.sendMessage(Text.literal("You have already sent this player a teleport request, please wait until it expires, or they accept it."), false);
                             } else {
-                                from.sendMessage(new LiteralText("Sent request to teleport ")
+                                from.sendMessage(Text.literal("Sent request to teleport ")
                                         .append(to.getName())
                                         .append(" to you"), false);
 
-                                to.sendMessage(new LiteralText("")
+                                to.sendMessage(Text.literal("")
                                                 .append(from.getName())
-                                                .append(new LiteralText(" wants you to teleport to them, type /tpa <player> to accept"))
+                                                .append(Text.literal(" wants you to teleport to them, type /tpa <player> to accept"))
                                         , false);
                             }
 
@@ -74,7 +77,7 @@ public class TeleportCommands {
 
         var tpa = literal("tpa")
                 .executes(context -> {
-                    ServerPlayerEntity acceptor = context.getSource().getPlayer();
+                    ServerPlayerEntity acceptor = context.getSource().getPlayerOrThrow();
 
                     var teleport = Components.TELEPORT.get(acceptor);
                     teleport.removeSingleRequest().ifPresentOrElse(
@@ -91,9 +94,9 @@ public class TeleportCommands {
                             },
                             () -> {
                                 if (teleport.numRequests() == 0) {
-                                    acceptor.sendMessage(new LiteralText("There are no teleport requests to accept"), false);
+                                    acceptor.sendMessage(Text.literal("There are no teleport requests to accept"), false);
                                 } else {
-                                    acceptor.sendMessage(new LiteralText("You have multiple requests, use /tpa <player> to accept a specific one"), false);
+                                    acceptor.sendMessage(Text.literal("You have multiple requests, use /tpa <player> to accept a specific one"), false);
                                 }
                             }
                     );
@@ -102,7 +105,7 @@ public class TeleportCommands {
                 })
                 .then(argument("player", EntityArgumentType.player())
                         .executes(context -> {
-                            ServerPlayerEntity acceptor = context.getSource().getPlayer();
+                            ServerPlayerEntity acceptor = context.getSource().getPlayerOrThrow();
                             ServerPlayerEntity requester = EntityArgumentType.getPlayer(context, "player");
 
                             var teleport = Components.TELEPORT.get(acceptor);
@@ -116,7 +119,7 @@ public class TeleportCommands {
                                     },
                                     () -> {
                                         if (teleport.numRequests() == 0) {
-                                            acceptor.sendMessage(new LiteralText("There are no teleport requests to accept"), false);
+                                            acceptor.sendMessage(Text.literal("There are no teleport requests to accept"), false);
                                         }
                                     }
                             );

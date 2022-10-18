@@ -2,15 +2,15 @@ package net.bios.frenchvanilla.config.setting;
 
 import net.minecraft.nbt.NbtByte;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 public class BooleanSetting implements Setting {
-    private static Text TRUE = new LiteralText("ENABLED")
+    private static Text TRUE = Text.literal("ENABLED")
             .setStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN));
-    private static Text FALSE = new LiteralText("DISABLED")
+    private static Text FALSE = Text.literal("DISABLED")
             .setStyle(Style.EMPTY.withColor(Formatting.RED));
 
     private boolean defaultValue;
@@ -39,9 +39,9 @@ public class BooleanSetting implements Setting {
     public Text text() {
         Text valText = this.value ? TRUE : FALSE;
         Text defText = this.defaultValue ? TRUE : FALSE;
-        return new LiteralText("")
+        return Text.literal("")
                 .append(valText)
-                .append(new LiteralText(" (default: "))
+                .append(" (default: ")
                 .append(defText)
                 .append(")");
     }

@@ -1,13 +1,15 @@
 package net.bios.frenchvanilla.player_config;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.bios.frenchvanilla.FrenchVanilla;
 import net.bios.frenchvanilla.config.ConfigCommandHelper;
 import net.bios.frenchvanilla.config.ConfigSettings;
 import net.bios.frenchvanilla.config.setting.Setting;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
+import net.minecraft.text.Text;
 
 import java.util.Map;
 
@@ -21,10 +23,10 @@ public class PlayerConfigCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         var command = literal("my_config").requires(source -> FrenchVanilla.config.playerConfig.value).executes(context -> {
-            ServerPlayerEntity player = context.getSource().getPlayer();
+            ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
             PlayerConfigComponent component = PLAYER_CONFIG.get(player);
 
-            player.sendMessage(new LiteralText("Settings:"), false);
+            player.sendMessage(Text.literal("Settings:"), false);
 
             for (Map.Entry<String, Setting> entry : component.config().settings().entrySet()) {
                 player.sendMessage(ConfigCommandHelper.settingText(entry.getKey(), entry.getValue()), false);

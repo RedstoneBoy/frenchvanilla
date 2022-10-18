@@ -21,6 +21,8 @@ public class NbtIds {
 
     public static String KEY_ORE_MINE = "ore_mine";
 
+    public static String SANITY = "sanity";
+
     public static String TELEPORT_REQUESTED_AT = "requested_at";
     public static String TELEPORT_TO_REQUESTER = "teleport_to_requester";
 }

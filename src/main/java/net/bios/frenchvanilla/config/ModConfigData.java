@@ -5,7 +5,7 @@ import me.lortseam.completeconfig.api.ConfigEntries;
 import me.lortseam.completeconfig.data.Config;
 import net.bios.frenchvanilla.FrenchVanilla;
 
-@ConfigEntries
+@ConfigEntries(includeAll = true)
 public final class ModConfigData extends Config implements ConfigContainer, ConfigData {
     public ModConfigData() {
         super(FrenchVanilla.ID);
@@ -21,6 +21,7 @@ public final class ModConfigData extends Config implements ConfigContainer, Conf
     public int oreMinerMaxVeinSize = 1024;
     public boolean playerConfig = true;
     public boolean restoreXp = true;
+    public boolean sanity = true;
     public int tasksPerTick = 128;
     public boolean teleport = true;
     public int teleportExpireTime = 10;

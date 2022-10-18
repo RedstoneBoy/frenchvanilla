@@ -24,9 +24,10 @@
     "frenchvanilla.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.8",
-    "fabric": "*",
-    "minecraft": "1.18.x"
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
   },
   "custom": {
     "cardinal-components": [
@@ -36,6 +37,7 @@
       "frenchvanilla:home",
       "frenchvanilla:player_bind_data",
       "frenchvanilla:player_config",
+      "frenchvanilla:player_sanity",
       "frenchvanilla:tasks",
       "frenchvanilla:teleport"
     ]

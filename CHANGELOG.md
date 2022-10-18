@@ -1,3 +1,10 @@
+## Version 1.5.0
+
+- Change campfire sleeping
+  - Campfire sleeping no longer requires a bed
+  - To sleep at a campfire, the player must right-click
+  the campfire with an empty hand while standing on a log
+
 ## Version 1.4.0
 
 - Add unpath

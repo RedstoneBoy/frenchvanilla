@@ -43,7 +43,7 @@ This mod can also be installed on clients for use in single-player worlds.
     - Use `/my_config` to see your settings
     - Modify each setting with `/my_config <setting> <new_value>`
 - Rest at campfires
-    - With an empty hand, right-click a campfire placed next to a bed to skip to night
+    - With an empty hand, right-click a campfire while standing on a log to skip to night
 - Teleport commands
     - `/tpto <player>` - request to teleport command user to player
         - Permission: `frenchvanilla.teleport` or permission-level 2

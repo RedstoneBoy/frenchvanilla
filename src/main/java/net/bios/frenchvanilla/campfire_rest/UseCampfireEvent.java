@@ -1,20 +1,17 @@
 package net.bios.frenchvanilla.campfire_rest;
 
 import net.bios.frenchvanilla.FrenchVanilla;
-import net.bios.frenchvanilla.SleepUtil;
 import net.bios.frenchvanilla.Texts;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 public class UseCampfireEvent implements UseBlockCallback {
@@ -34,8 +31,8 @@ public class UseCampfireEvent implements UseBlockCallback {
 
         ServerWorld sworld = (ServerWorld) world;
         if (sworld.getBlockState(hitResult.getBlockPos()).isIn(BlockTags.CAMPFIRES)) {
-            BlockPos bedPos = SleepUtil.findBedNextTo(sworld, hitResult.getBlockPos());
-            if (bedPos != null && sworld.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)) {
+            BlockPos logPos = player.getBlockPos().down();
+            if (sworld.getBlockState(logPos).isIn(BlockTags.LOGS)) {
                 if (sworld.getTimeOfDay() % 24000L > 13000L) {
                     player.sendMessage(Texts.ALREADY_NIGHT);
 
